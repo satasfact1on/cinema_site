@@ -16,7 +16,7 @@
 
 const movieDB = {
     movies: [
-        "Логан",
+        "Lоган",
         "Лига справедливости",
         "Ла-ла лэнд",
         "Одержимость",
@@ -25,9 +25,26 @@ const movieDB = {
 };
 
 const adv = document.querySelector('.promo__adv'),
-    imgAdv = adv.querySelectorAll('img');
+    imgAdv = adv.querySelectorAll('img'),
+    promoGenre = document.querySelector('.promo__genre'),
+    promoBg = document.querySelector('.promo__bg'),
+    promoInt= document.querySelector('.promo__interactive-list');
 
 imgAdv.forEach(item => {
     item.remove();
 });
 
+promoGenre.textContent = 'Драма';
+
+promoBg.style.cssText = `background: url(../img/bg.jpg) center center/cover no-repeat`;
+
+promoInt.innerHTML = '';
+
+movieDB.movies.sort();
+
+movieDB.movies.forEach((film, i) => {
+    promoInt.innerHTML += `
+    <li class='promo__interactive-item'>${i + 1}. ${film}</li>
+    <div class='delete'></div>
+    `;
+});
